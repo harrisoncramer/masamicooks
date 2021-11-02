@@ -2,6 +2,9 @@ name: Deploy the site to AWS
 on:
   push:
     branches: ['main']
+  repository_dispatch:
+    types:
+      - webhook
 jobs:
   deploy:
     runs-on: ubuntu-latest
