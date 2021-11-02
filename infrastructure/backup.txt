@@ -1,0 +1,3 @@
+VALUE _9bd34cacd2daa6fc8ba19ce546833921.lblqlwmygg.acm-validations.aws.
+RECORD_NAME _606ed97a3ccf57d49a17a049274b68be.masamicooks.com
+RECORD TYPE CNAME
