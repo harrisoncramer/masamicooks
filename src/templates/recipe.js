@@ -5,7 +5,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Seo from '../components/seo'
 import Layout from '../components/layout'
-import Hero from '../components/hero'
 import Tags from '../components/tags.js'
 import * as styles from './recipe.module.css'
 

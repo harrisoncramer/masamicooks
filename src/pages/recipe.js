@@ -4,7 +4,6 @@ import get from 'lodash/get'
 
 import Seo from '../components/seo'
 import Layout from '../components/layout'
-import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
 class RecipeIndex extends React.Component {
@@ -14,7 +13,7 @@ class RecipeIndex extends React.Component {
     return (
       <Layout location={this.props.location}>
         <Seo title="Recipes" />
-        <Hero title="Recipes" />
+        <h1>Recipes</h1>
         <ArticlePreview posts={recipes} />
       </Layout>
     )
@@ -32,7 +31,12 @@ export const pageQuery = graphql`
         date(formatString: "MMMM Do, YYYY")
         categories
         mainImage {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            width: 424
+            height: 212
+          )
         }
       }
     }
