@@ -7,7 +7,7 @@ const Navigation = () => (
   <nav role="navigation" className={styles.container} aria-label="Main">
     <Link to="/" className={styles.logoLink}>
       <span className={styles.logo} />
-      <span className={styles.navigationItem}>Gatsby Starter Contentful</span>
+      <span className={styles.navigationItem}>masamicooks</span>
     </Link>
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}>
@@ -16,8 +16,8 @@ const Navigation = () => (
         </Link>
       </li>
       <li className={styles.navigationItem}>
-        <Link to="/blog/" activeClassName="active">
-          Blog
+        <Link to="/recipe/" activeClassName="active">
+          Recipes
         </Link>
       </li>
     </ul>
