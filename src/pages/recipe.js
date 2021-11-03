@@ -2,44 +2,37 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
+import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
-class RootIndex extends React.Component {
+class RecipeIndex extends React.Component {
   render() {
     const recipes = get(this, 'props.data.allContentfulRecipe.nodes')
-    // const [author] = get(this, 'props.data.allContentfulPerson.nodes')
 
     return (
       <Layout location={this.props.location}>
+        <Seo title="Recipes" />
+        <Hero title="Recipes" />
         <ArticlePreview posts={recipes} />
       </Layout>
     )
   }
 }
 
-export default RootIndex
+export default RecipeIndex
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query RecipeIndexQuery {
     allContentfulRecipe(sort: { fields: [date], order: DESC }) {
       nodes {
-        slug
-        servings
-        prepTime
-        optionalIngredients
-        summary
         title
-        date
-        content {
-          raw
-        }
+        slug
+        date(formatString: "MMMM Do, YYYY")
+        categories
         mainImage {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
-          resize(height: 630, width: 1200) {
-            src
-          }
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         }
       }
     }
