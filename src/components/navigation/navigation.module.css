@@ -7,6 +7,11 @@
   padding: var(--space-2xl) var(--size-gutter);
 }
 
+.container-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navigation {
   display: flex;
   list-style: none;

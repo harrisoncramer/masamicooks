@@ -27,7 +27,6 @@ export const pageQuery = graphql`
         slug
         servings
         prepTime
-        optionalIngredients
         summary
         title
         date
