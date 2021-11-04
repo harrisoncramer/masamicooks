@@ -1,0 +1,23 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.search input {
+  padding: 0.4em;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #282828;
+}
+
+.search-list {
+  padding: 1em;
+  position: absolute;
+  z-index: 100;
+  margin-top: 3em;
+  background-color: white;
+  top: 5px;
+}

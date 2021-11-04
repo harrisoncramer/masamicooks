@@ -5,7 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Seo from '../components/seo'
 import Layout from '../components/layout'
-import Tags from '../components/tags.js'
+import Tags from '../components/tags'
 import * as styles from './recipe.module.css'
 
 class RecipeTemplate extends React.Component {
@@ -15,7 +15,11 @@ class RecipeTemplate extends React.Component {
     const next = get(this.props, 'data.next')
 
     const bodyHtml = documentToReactComponents(JSON.parse(post.content.raw))
+    const introHtml = post.introduction.raw
+      ? documentToReactComponents(JSON.parse(post.introduction.raw))
+      : null
 
+    console.log(post)
     return (
       <Layout location={this.props.location}>
         <Seo
@@ -24,12 +28,16 @@ class RecipeTemplate extends React.Component {
           image={`http:${post.mainImage.resize.src}`}
         />
         <div className={styles.container}>
-          <span className={styles.meta}></span>
           <div className={styles.article}>
             <div className={styles.recipeInfo}>
               <h1>{post.title}</h1>
               <time dateTime={post.date}>{post.date}</time>
             </div>
+            {introHtml && (
+              <div className="introduction">
+                <p>{introHtml}</p>
+              </div>
+            )}
             <div className="ingredients">
               <h2>Ingredients</h2>
               <ul>
@@ -105,6 +113,9 @@ export const pageQuery = graphql`
         }
       }
       optionalIngredients
+      introduction {
+        raw
+      }
       cookTime
       prepTime
       servings

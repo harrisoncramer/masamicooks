@@ -51,6 +51,10 @@ h6 {
   line-height: var(--dense);
 }
 
+li {
+  list-style-type: none;
+}
+
 a {
   color: currentColor;
   text-decoration: none;

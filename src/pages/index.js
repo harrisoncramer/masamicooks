@@ -8,11 +8,11 @@ import ArticlePreview from '../components/article-preview'
 class RootIndex extends React.Component {
   render() {
     const recipes = get(this, 'props.data.allContentfulRecipe.nodes')
-    // const [author] = get(this, 'props.data.allContentfulPerson.nodes')
+    const blogPosts = get(this, 'props.data.allContentfulBlogPost.nodes')
 
     return (
       <Layout location={this.props.location}>
-        <ArticlePreview posts={recipes} />
+        <ArticlePreview recipes={recipes} blogPosts={blogPosts} />
       </Layout>
     )
   }
@@ -27,7 +27,6 @@ export const pageQuery = graphql`
         slug
         servings
         prepTime
-        optionalIngredients
         summary
         title
         date
@@ -40,6 +39,14 @@ export const pageQuery = graphql`
             src
           }
         }
+      }
+    }
+
+    # sort: { fields: [date], order: DESC }
+    allContentfulBlogPost {
+      nodes {
+        title
+        slug
       }
     }
   }
