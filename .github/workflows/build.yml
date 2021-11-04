@@ -1,7 +1,7 @@
 name: Build Gatsby site
 on:
   push:
-    branches: ['develop']
+    branches: ['dev']
 jobs:
   build:
     runs-on: ubuntu-latest
