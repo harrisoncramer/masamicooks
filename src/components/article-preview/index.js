@@ -8,24 +8,24 @@ import Tags from '../tags'
 
 import * as styles from './article-preview.module.css'
 
-const ArticlePreview = ({ posts }) => {
-  if (!posts) return null
-  if (!Array.isArray(posts)) return null
+const ArticlePreview = ({ recipes, blogPosts }) => {
+  if (!recipes && !blogPosts) return null
+  if (!Array.isArray(recipes) || !Array.isArray(blogPosts)) return null
 
   return (
     <Container>
       <ul className={styles.articleList}>
-        {posts.map((post) => {
+        {recipes.map((recipe) => {
           return (
-            <li key={post.slug}>
-              <Link to={`/recipe/${post.slug}`}>
-                <GatsbyImage alt="" image={post.mainImage.gatsbyImageData} />
-                <h2>{post.title}</h2>
+            <li key={recipe.slug}>
+              <Link to={`/recipe/${recipe.slug}`}>
+                <GatsbyImage alt="" image={recipe.mainImage.gatsbyImageData} />
+                <h2>{recipe.title}</h2>
               </Link>
-              <div>{post.summary}</div>
+              <div>{recipe.summary}</div>
               <div>
-                <small className="meta">{post.publishDate}</small>
-                <Tags tags={post.tags} />
+                <small className="meta">{recipe.publishDate}</small>
+                <Tags tags={recipe.tags} />
               </div>
             </li>
           )
