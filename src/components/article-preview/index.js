@@ -3,9 +3,8 @@ import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
-import Container from './container'
-import Tags from './tags.js'
-import * as styles from './article-preview.module.css'
+import Container from '../container'
+import Tags from '../tags'
 
 const ArticlePreview = ({ posts }) => {
   if (!posts) return null
@@ -13,16 +12,16 @@ const ArticlePreview = ({ posts }) => {
 
   return (
     <Container>
-      <ul className={styles.articleList}>
+      <ul>
         {posts.map((post) => {
           return (
             <li key={post.slug}>
-              <Link to={`/recipe/${post.slug}`} className={styles.link}>
+              <Link to={`/recipe/${post.slug}`}>
                 <GatsbyImage alt="" image={post.mainImage.gatsbyImageData} />
-                <h2 className={styles.title}>{post.title}</h2>
+                <h2>{post.title}</h2>
               </Link>
               <div>{post.summary}</div>
-              <div className={styles.meta}>
+              <div>
                 <small className="meta">{post.publishDate}</small>
                 <Tags tags={post.tags} />
               </div>
