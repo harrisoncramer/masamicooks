@@ -15,7 +15,7 @@ class RecipeTemplate extends React.Component {
     const next = get(this.props, 'data.next')
 
     const bodyHtml = documentToReactComponents(JSON.parse(post.content.raw))
-    const introHtml = post.introduction.raw
+    const introHtml = post.introduction
       ? documentToReactComponents(JSON.parse(post.introduction.raw))
       : null
 

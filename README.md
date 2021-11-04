@@ -49,4 +49,4 @@ This action is basically triggered via a POST request to the `https://api.github
 }
 ```
 
-This will get detected by our Github Action, which will run the deploy. We only send this POST in Contentful when a piece of content is published or unpublished.
+This will get detected by our Github Action, which will run the deploy. We only send this POST in Contentful when a piece of content is published or unpublished!
