@@ -42,7 +42,13 @@ const Search = (props) => {
 
   return (
     <div className={styles.search}>
-      <input type="text" value={query} onChange={handleChange}></input>
+      <input
+        id="search"
+        type="text"
+        value={query}
+        placeholder={'Search...'}
+        onChange={handleChange}
+      ></input>
       <ResultList results={results} query={query} />
     </div>
   )

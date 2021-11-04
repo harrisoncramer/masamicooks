@@ -6,13 +6,15 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Container from '../container'
 import Tags from '../tags'
 
+import * as styles from './article-preview.module.css'
+
 const ArticlePreview = ({ posts }) => {
   if (!posts) return null
   if (!Array.isArray(posts)) return null
 
   return (
     <Container>
-      <ul>
+      <ul className={styles.articleList}>
         {posts.map((post) => {
           return (
             <li key={post.slug}>
