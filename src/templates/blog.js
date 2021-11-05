@@ -10,7 +10,7 @@ import * as styles from './recipe.module.css'
 
 class RecipeTemplate extends React.Component {
   render() {
-    return <p>Blog Page</p>
+    return <h1>This blog page is still under construction!</h1>
   }
 }
 
