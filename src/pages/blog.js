@@ -7,11 +7,11 @@ import ArticlePreview from '../components/article-preview'
 
 class RecipePage extends React.Component {
   render() {
-    const recipes = get(this, 'props.data.allContentfulRecipe.nodes')
+    const blogs = get(this, 'props.data.allContentfulBlog.nodes')
 
     return (
       <Layout location={this.props.location}>
-        <ArticlePreview recipes={recipes} />
+        <ArticlePreview blogPosts={blogs} />
       </Layout>
     )
   }
@@ -20,15 +20,13 @@ class RecipePage extends React.Component {
 export default RecipePage
 
 export const recipePageQuery = graphql`
-  query RecipePageQuery {
-    allContentfulRecipe(sort: { fields: [date], order: DESC }) {
+  query BlogPageQuery {
+    allContentfulBlog(sort: { fields: [date], order: DESC }) {
       nodes {
         slug
-        servings
-        prepTime
-        summary
         title
         date
+        summary
         content {
           raw
         }

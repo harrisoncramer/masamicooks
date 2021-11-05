@@ -6,12 +6,14 @@ import * as styles from './search.module.css'
 /* Create debounced function to only call once. */
 const debouncedSearch = debounce(performSearch, 300)
 
-function performSearch(recipes, query, setResults) {
-  const results = recipes
-    .map((recipe) => {
-      return { ...recipe, content: Object.values(recipe).join('\n') }
+function performSearch(recipes, blogPosts, query, setResults) {
+  const results = [...recipes, ...blogPosts]
+    .map((item) => {
+      return { ...item, content: Object.values(item).join('\n') }
     })
-    .filter((recipe) => recipe.content.includes(query))
+    .filter((item) => {
+      return item.content.includes(query)
+    })
 
   setResults(results)
 }
@@ -22,13 +24,21 @@ const Search = (props) => {
 
   const data = useStaticQuery(graphql`
     query SearchQuery {
-      allContentfulRecipe(sort: { fields: [date], order: DESC }) {
+      allContentfulRecipe {
         nodes {
+          __typename
           slug
-          servings
           ingredients
           summary
           title
+        }
+      }
+      allContentfulBlog {
+        nodes {
+          __typename
+          slug
+          title
+          summary
         }
       }
     }
@@ -37,7 +47,12 @@ const Search = (props) => {
   // Combine fields and filter by search term
   function handleChange(e) {
     setQuery(e.target.value)
-    debouncedSearch(data.allContentfulRecipe.nodes, query, setResults)
+    debouncedSearch(
+      data.allContentfulRecipe.nodes,
+      data.allContentfulBlog.nodes,
+      query,
+      setResults
+    )
   }
 
   return (
@@ -58,13 +73,16 @@ const ResultList = ({ results, query }) => {
   if (results.length > 0 && query.length > 2) {
     return (
       <ul className={styles.searchList}>
-        {results.map((node, i) => (
-          <li key={i}>
-            <Link to={`/recipe/${node.slug}`}>
-              <h4>{node.title}</h4>
-            </Link>
-          </li>
-        ))}
+        {results.map((node, i) => {
+          const type = node.__typename === "ContentfulBlog" ? 'blog' : 'recipe';
+          return (
+            <li key={i}>
+              <Link to={`/${type}/${node.slug}`}>
+                <h4>{node.title}</h4>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     )
   } else if (query.length > 2) {

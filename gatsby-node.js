@@ -5,11 +5,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for recipe
   const recipeTemplate = path.resolve('./src/templates/recipe.js')
+  const blogTemplate = path.resolve('./src/templates/blog.js')
 
   const result = await graphql(
     `
       {
         allContentfulRecipe {
+          nodes {
+            title
+            slug
+          }
+        }
+        allContentfulBlog {
           nodes {
             title
             slug
@@ -28,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const recipes = result.data.allContentfulRecipe.nodes
+  const blogs = result.data.allContentfulBlog.nodes
 
   // Create recipe pages
   // But only if there's at least one recipe in Contentful
@@ -46,6 +54,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           slug: recipe.slug,
           previousRecipeSlug,
           nextRecipeSlug,
+        },
+      })
+    })
+  }
+
+  if (blogs.length > 0) {
+    blogs.forEach((blog, index) => {
+      const previousBlogSlug = index === 0 ? null : blog[index - 1].slug
+      const nextBlogSlug =
+        index === blogs.length - 1 ? null : blog[index + 1].slug
+
+      createPage({
+        path: `/blog/${blog.slug}/`,
+        component: blogTemplate,
+        context: {
+          slug: blog.slug,
+          previousBlogSlug,
+          nextBlogSlug,
         },
       })
     })

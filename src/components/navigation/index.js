@@ -23,6 +23,11 @@ const Navigation = () => (
             Recipes
           </Link>
         </li>
+        <li className={styles.navigationItem}>
+          <Link to="/blog/" activeClassName="active">
+            Blog
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>
