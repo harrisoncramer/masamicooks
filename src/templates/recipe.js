@@ -6,7 +6,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Tags from '../components/tags'
-import * as styles from './recipe.module.css'
 
 class RecipeTemplate extends React.Component {
   render() {
@@ -19,7 +18,6 @@ class RecipeTemplate extends React.Component {
       ? documentToReactComponents(JSON.parse(post.introduction.raw))
       : null
 
-    console.log(post)
     return (
       <Layout location={this.props.location}>
         <Seo
@@ -27,9 +25,9 @@ class RecipeTemplate extends React.Component {
           description={post.summary}
           image={`http:${post.mainImage.resize.src}`}
         />
-        <div className={styles.container}>
-          <div className={styles.article}>
-            <div className={styles.recipeInfo}>
+        <div className="container">
+          <div className="article">
+            <div className="recipeInfo">
               <h1>{post.title}</h1>
               <time dateTime={post.date}>{post.date}</time>
             </div>
@@ -69,7 +67,7 @@ class RecipeTemplate extends React.Component {
             <Tags tags={post.categories} />
             {(previous || next) && (
               <nav>
-                <ul className={styles.articleNavigation}>
+                <ul className="articleNavigation">
                   {previous && (
                     <li>
                       <Link to={`/recipe/${previous.slug}`} rel="prev">

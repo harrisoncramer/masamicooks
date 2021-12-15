@@ -1,10 +1,8 @@
 import React from 'react'
 
-const Container = ({ children, as = 'div' }) => {
-  const Tag = as
-
+const Container: React.FC<Props> = ({ children }) => {
   return (
-    <Tag
+    <div
       style={{
         maxWidth: 'var(--size-max-width)',
         margin: '0 auto',
@@ -12,7 +10,7 @@ const Container = ({ children, as = 'div' }) => {
       }}
     >
       {children}
-    </Tag>
+    </div>
   )
 }
 

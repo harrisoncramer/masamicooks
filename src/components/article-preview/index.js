@@ -30,7 +30,6 @@ const ArticlePreview = ({ recipes, blogPosts }) => {
           })}
         {blogPosts &&
           blogPosts.map((blogPost) => {
-            console.log(blogPost)
             return (
               <li key={blogPost.slug}>
                 <Link to={`/blog/${blogPost.slug}`}>

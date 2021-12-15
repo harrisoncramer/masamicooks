@@ -41,6 +41,7 @@ module.exports = {
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
+    `gatsby-plugin-typescript`,
     `gatsby-plugin-postcss`,
     "gatsby-transformer-remark",
     "gatsby-transformer-sharp",
