@@ -1,17 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Container from '../container'
 import Tags from '../tags'
 
-import * as styles from './article-preview.module.css'
-
 const ArticlePreview = ({ recipes, blogPosts }) => {
   return (
     <Container>
-      <ul className={styles.articleList}>
+      <ul className="m-0 p-0 list-none grid grid-cols-3 gap-4">
         {recipes &&
           recipes.map((recipe) => {
             return (

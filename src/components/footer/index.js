@@ -1,11 +1,10 @@
 import React from 'react'
 
 import Container from '../container'
-import * as styles from './footer.module.css'
 
 const Footer = () => (
   <Container as="footer">
-    <div className={styles.container}>©2021 masamicooks.com</div>
+    <div className="text-sm mt-2 p-2 text-center">©2021 masamicooks.com</div>
   </Container>
 )
 
