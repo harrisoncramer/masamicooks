@@ -5,7 +5,7 @@ import logo from "../../assets/hot-pot.png"
 import Search from '../search'
 
 const Navigation = () => (
-  <nav role="navigation" aria-label="Main" className="flex justify-between nav px-2 py-2 lg:px-3 lg:py-3 fixed top-0 z-10 bg-app-white w-full h-18 drop-shadow">
+  <nav role="navigation" aria-label="Main" className="flex justify-between nav px-2 py-2 lg:px-3 lg:py-3 fixed top-0 bg-app-white w-full h-18 drop-shadow z-20">
     <div className="nav__left">
       <Link className="flex justify-start items-center pl-2" to="/" >
         <div className="object-scale-down h-8 w-8 lg:h-10 lg:w-10 mr-2">
