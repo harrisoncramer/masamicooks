@@ -12,12 +12,12 @@ const Navigation = () => (
           <img src={logo} alt="Logo" />
         </div>
         <div className="mainTitle">
-          <h1 className="font-display text-2xl lg:text-3xl">MasamiCooks</h1>
+          <h1 className="font-display text-2xl lg:text-4xl">MasamiCooks</h1>
         </div>
       </Link>
     </div>
     <div className="flex gap-4 justify-end items-center nav__right">
-      <Link to="/" activeClassName="active">
+      <Link to="/about" activeClassName="active">
         <h2 className="font-display sm:text-lg md:text-lg lg:text-xl">
           About
         </h2>

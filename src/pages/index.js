@@ -16,9 +16,9 @@ const RootIndex = function ({ location, data }) {
             return (
               <div key={recipe.slug}>
                 <div><p></p></div>
-                <Link to={`/recipe/${recipe.slug}`} class="image-wrapper" >
+                <Link to={`/recipe/${recipe.slug}`} className="image-wrapper" >
                   <GatsbyImage
-                    class="hover:cursor-pointer transition hover:scale-105 duration-300 motion-reduce:transition-none motion-reduce:transform-none"
+                    className="hover:cursor-pointer transition hover:opacity-80 duration-300 motion-reduce:transition-none motion-reduce:transform-none drop-shadow-md"
                     alt={recipe.title}
                     image={recipe.mainImage.gatsbyImageData}
                     title={recipe.title}

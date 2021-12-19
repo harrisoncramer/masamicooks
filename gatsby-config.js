@@ -36,8 +36,8 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful Starter",
-    description: "Official Contentful Gatsby Starter",
+    title: "MasamiCooks",
+    description: "Masami Cookson's cooking blog.",
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [

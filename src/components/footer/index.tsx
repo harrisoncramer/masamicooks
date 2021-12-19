@@ -1,11 +1,7 @@
 import React from 'react'
 
-import Container from '../container'
-
 const Footer = () => (
-  <Container as="footer">
-    <div className="text-sm mt-2 p-2 font-display flex justify-center">©2021 masamicooks.com</div>
-  </Container>
+    <footer className="text-sm mt-2 p-2 font-display flex justify-center items-end">©2021 masamicooks.com</footer>
 )
 
 export default Footer
