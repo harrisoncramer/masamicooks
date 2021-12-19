@@ -96,7 +96,7 @@ const ResultList = ({ results, query }) => {
           return (
             <Link to={`/${type}/${node.slug}`} key={i}>
               <li
-                className="search-results__item py-3 px-4 betterhover:bg-app-gray border border-app-gray"
+                className="search-results__item py-3 px-4 md:hover:bg-app-gray border border-app-gray"
               >
                 <h4>{node.title}</h4>
               </li>

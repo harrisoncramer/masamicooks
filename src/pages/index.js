@@ -17,12 +17,12 @@ const RootIndex = function ({ location, data }) {
               <div key={recipe.slug} className="image-wrapper relative group">
                 <Link to={`/recipe/${recipe.slug}`} >
                   <GatsbyImage
-                    className="betterhover:cursor-pointer transition group-hover:opacity-50 duration-300 drop-shadow-md w-full"
+                    className="md:hover:cursor-pointer transition md:group-hover:opacity-50 duration-300 drop-shadow-md w-full"
                     alt={recipe.title}
                     image={recipe.mainImage.gatsbyImageData}
                     title={recipe.title}
                   />
-                  <div className="image-description top-1/3 left-0 right-0 absolute z-10 w-3/4 my-0 mx-auto text-3xl transition opacity-0 group-hover:opacity-100">
+                  <div className="image-description top-1/3 left-0 right-0 absolute z-10 w-3/4 my-0 mx-auto text-3xl transition opacity-0 md:group-hover:opacity-100">
                     <p className="font-display text-center">{recipe.title}</p>
                   </div>
                 </Link>
