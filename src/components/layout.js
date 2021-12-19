@@ -10,12 +10,14 @@ class Template extends React.Component {
     const { children } = this.props
 
     return (
+      <>
+      <Navigation />
       <div className="content-container">
-        <Seo />
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+      <Seo />
+      <main className="md:mt-10 lg:mt-18">{children}</main>
+      <Footer />
       </div>
+      </>
     )
   }
 }

@@ -13,6 +13,7 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
+      'app-white': '#ffffff',
       'app-blue': '#2fb6ff',
       'app-purple': '#7e5bef',
       'app-pink': '#ff49db',
@@ -21,9 +22,13 @@ module.exports = {
       'app-yellow': '#ffc82c',
       'app-gray-dark': '#273444',
       'app-gray': '#8492a6',
-      'app-gray-light': '#d3dce6',
+      'app-gray-light': '#f8f8ff',
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+      }
+    },
   },
   plugins: [],
 }
