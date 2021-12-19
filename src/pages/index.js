@@ -1,23 +1,53 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
+
+import { Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
 
-class RootIndex extends React.Component {
-  render() {
-    const recipes = get(this, 'props.data.allContentfulRecipe.nodes')
-    const blogPosts = get(this, 'props.data.allContentfulBlogPost.nodes')
-
+const RootIndex = function ({ location, data }) {
+  const recipes = data.allContentfulRecipe.nodes;
     return (
-      <Layout location={this.props.location}>
-        <h1 style={{ textAlign: 'center' }}>
-          This site is still under construction!
-        </h1>
+      <Layout location={location}>
+        <div className="image-wrapper grid gap-2 grid-cols-4 p-2">
+        {recipes &&
+          recipes.map((recipe) => {
+            return (
+              <div key={recipe.slug}>
+                <Link to={`/recipe/${recipe.slug}`}>
+                  <GatsbyImage
+                    alt=""
+                    image={recipe.mainImage.gatsbyImageData}
+                  />
+                </Link>
+              </div>
+            )
+          })}
+      </div>
       </Layout>
     )
-  }
-}
+};
 
 export default RootIndex
+
+export const mainPageQuery = graphql`
+  query RootPageQuery {
+    allContentfulRecipe(sort: { fields: [date], order: DESC }) {
+      nodes {
+        slug
+        servings
+        prepTime
+        summary
+        title
+        date
+        content {
+          raw
+        }
+        mainImage {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+`
