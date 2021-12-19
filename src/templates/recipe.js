@@ -38,7 +38,7 @@ class RecipeTemplate extends React.Component {
           </div>
           <div className="meta-container mb-4 md:flex gap-4">
             <GatsbyImage
-              className="hover:cursor-pointer transition group-hover:opacity-50 duration-300 drop-shadow-md w-full mb-4"
+              className="betterhover:cursor-pointer transition group-hover:opacity-50 duration-300 drop-shadow-md w-full mb-4"
               alt={post.title}
               image={post.mainImage.gatsbyImageData}
               title={post.title}
