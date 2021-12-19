@@ -14,7 +14,7 @@ class Template extends React.Component {
         <Navigation />
         <div className="content-container">
         <Seo />
-        <main className="mt-10 md:mt-10 lg:mt-20">{children}</main>
+        <main className="mt-16 lg:mt-20 mx-3">{children}</main>
         <Footer />
         </div>
       </>

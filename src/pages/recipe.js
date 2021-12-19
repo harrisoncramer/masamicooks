@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
 
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import Search from "../components/search"
 
-class RecipePage extends React.Component {
-  render() {
-    const recipes = get(this, 'props.data.allContentfulRecipe.nodes')
-
-    return (
-      <Layout location={this.props.location}>
-        <ArticlePreview recipes={recipes} />
-      </Layout>
-    )
-  }
+const RecipePage = function(props) {
+  const [filter, setFilter] = useState(null);
+  return (
+    <Layout location={props.location}>
+      <Search filter={filter} setFilter={setFilter} />
+      <ArticlePreview recipes={props.data.allContentfulRecipe.nodes} filter={filter}/>
+    </Layout>
+  )
 }
 
 export default RecipePage

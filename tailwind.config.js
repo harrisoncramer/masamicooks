@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     fontFamily: {
-      sans: [],
+      sans: ["Helvetica"],
       serif: [],
       display: ["Staatliches"]
     },
@@ -21,7 +21,7 @@ module.exports = {
       'app-green': '#13ce66',
       'app-yellow': '#ffc82c',
       'app-gray-dark': '#273444',
-      'app-gray': '#8492a6',
+      'app-gray': '#ebebf2',
       'app-gray-light': '#f8f8ff',
     },
     extend: {

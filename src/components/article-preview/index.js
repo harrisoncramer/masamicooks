@@ -5,50 +5,36 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Container from '../container'
 import Tags from '../tags'
 
+const RecipeMetadata = function ({ recipe }) {
+  console.log(recipe);
+  return (
+    <div className="recipe-metadata p-2">
+      <p className="font-display text-xl">{recipe.title}</p>
+      <small className="meta">{recipe.summary}</small>
+      <Tags tags={recipe.tags} />
+    </div>
+  )
+}
 const ArticlePreview = ({ recipes, blogPosts }) => {
   return (
-    <Container>
-      <ul className="m-0 p-0 list-none grid grid-cols-3 gap-4">
+      <div className="image-wrapper grid lg:gap-4 lg:grid-cols-4 md:gap-3 md:grid-cols-3 sm:grid-cols-2 gap-2 max-w-max m-auto">
         {recipes &&
-          recipes.map((recipe) => {
+          recipes.map((recipe, i) => {
             return (
-              <li key={recipe.slug}>
+              <div key={recipe.slug} className="image-wrapper relative group">
                 <Link to={`/recipe/${recipe.slug}`}>
                   <GatsbyImage
-                    alt=""
+                    className="hover:cursor-pointer transition group-hover:opacity-50 duration-300 w-full"
+                    alt={recipe.title}
                     image={recipe.mainImage.gatsbyImageData}
+                    title={recipe.title}
                   />
-                  <h2>{recipe.title}</h2>
+                  <RecipeMetadata recipe={recipe}/>
                 </Link>
-                <div>{recipe.summary}</div>
-                <div>
-                  <small className="meta">{recipe.publishDate}</small>
-                  <Tags tags={recipe.tags} />
-                </div>
-              </li>
+              </div>
             )
           })}
-        {blogPosts &&
-          blogPosts.map((blogPost) => {
-            return (
-              <li key={blogPost.slug}>
-                <Link to={`/blog/${blogPost.slug}`}>
-                  <GatsbyImage
-                    alt=""
-                    image={blogPost.mainImage.gatsbyImageData}
-                  />
-                  <h2>{blogPost.title}</h2>
-                </Link>
-                <div>{blogPost.summary}</div>
-                <div>
-                  <small className="meta">{blogPost.publishDate}</small>
-                  <Tags tags={blogPost.tags} />
-                </div>
-              </li>
-            )
-          })}
-      </ul>
-    </Container>
+      </div>
   )
 }
 

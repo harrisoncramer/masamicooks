@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import { debounce } from 'lodash'
-import * as styles from './search.module.css'
 
 /* Create debounced function to only call once. */
 const debouncedSearch = debounce(performSearch, 300)
@@ -19,6 +18,7 @@ function performSearch(recipes, blogPosts, query, setResults) {
 }
 
 const Search = (props) => {
+  const searchRef = useRef(null)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
 
@@ -55,46 +55,61 @@ const Search = (props) => {
     )
   }
 
+  const pageClickEvent = (e) => {
+    if (searchRef && searchRef.current === null) return
+    if (!searchRef.current.contains(e.target)) {
+      setQuery('')
+    }
+  }
+
+  useEffect(() => {
+    // If the item is active (ie open) then listen for clicks
+    window.addEventListener('click', pageClickEvent)
+    // Clean up
+    return () => {
+      window.removeEventListener('click', pageClickEvent)
+    }
+  }, [])
+
   return (
-    <div className={styles.search}>
+    <div className="search-field my-4">
       <input
+        ref={searchRef}
+        className="search-field my-1 flex border-2 p-2 rounded width border-app-gray"
         id="search"
         type="text"
         value={query}
         placeholder={'Search...'}
         onChange={handleChange}
-      ></input>
-      <ResultList results={results} query={query} />
+      />
+      {query.length > 2 && <ResultList results={results} query={query} />}
     </div>
   )
 }
 
 const ResultList = ({ results, query }) => {
-  if (results.length > 0 && query.length > 2) {
-    return (
-      <ul className={styles.searchList}>
-        {results.map((node, i) => {
-          const type = node.__typename === "ContentfulBlog" ? 'blog' : 'recipe';
+  return (
+    <ul className="search-results absolute z-10 bg-app-white drop-shadow rounded-b-lg rounded-tr-lg mt-1 max-h-80 overflow-scroll">
+      {results.length > 0 ? (
+        results.map((node, i) => {
+          const type = node.__typename === 'ContentfulBlog' ? 'blog' : 'recipe'
           return (
-            <li key={i}>
-              <Link to={`/${type}/${node.slug}`}>
+            <Link to={`/${type}/${node.slug}`} key={i}>
+              <li
+                className="search-results__item py-3 px-4 hover:bg-app-gray border border-app-gray"
+              >
                 <h4>{node.title}</h4>
-              </Link>
-            </li>
+              </li>
+            </Link>
           )
-        })}
-      </ul>
-    )
-  } else if (query.length > 2) {
-    return (
-      <ul className={styles.searchList}>
-        <li>
-          <h4>No results for {query}</h4>
+        })
+      ) : (
+        <li className="search-results__item py-1 px-4">
+          <h4>No results.</h4>
         </li>
-      </ul>
-    )
-  } else if (query.length > 0) return <></>
-  else return <span></span>
+      )}
+    </ul>
+  )
 }
 
 export default Search
