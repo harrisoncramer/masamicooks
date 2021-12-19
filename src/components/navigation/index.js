@@ -5,11 +5,11 @@ import logo from "../../assets/hot-pot.png"
 import Search from '../search'
 
 const Navigation = () => (
-  <nav role="navigation" aria-label="Main" className="flex justify-between nav px-3 py-3">
+  <nav role="navigation" aria-label="Main" className="flex justify-between nav px-2 py-2 lg:px-3 lg:py-3">
     <div className="nav__left">
       <Link className="flex justify-start items-center pl-2" to="/" >
-        <div className="object-scale-down h-10 w-10">
-          <img src={logo} alt="Logo" className="si" />
+        <div className="object-scale-down h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10">
+          <img src={logo} alt="Logo" />
         </div>
         <div className="mainTitle">
           <h1 className="font-display sm:text-xl md:text-2xl lg:text-3xl">MasamiCooks</h1>
@@ -17,10 +17,9 @@ const Navigation = () => (
       </Link>
     </div>
     <div className="gap-4 justify-end items-center flex nav__right">
-      <Search />
       <Link to="/" activeClassName="active">
         <h2 className="font-display sm:text-lg md:text-lg lg:text-xl">
-          Home
+          About
         </h2>
       </Link>
       <Link to="/recipe/" activeClassName="active">
