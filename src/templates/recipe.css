@@ -1,0 +1,11 @@
+.introduction p {
+  margin-bottom: 1em;
+}
+
+.recipe {
+  grid-template-columns: 2fr 3fr;
+}
+
+.instructions p {
+  margin-bottom: 1em;
+}
