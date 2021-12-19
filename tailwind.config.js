@@ -4,7 +4,7 @@ module.exports = {
     fontFamily: {
       sans: [],
       serif: [],
-      display: ["Something New"]
+      display: ["Staatliches"]
     },
     screens: {
       sm: '480px',
