@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./typography.css";
+@import './typography.css';
+
+html {
+  @apply relative min-h-full;
+}
 
 body {
-  background-color: #f8f8ff;
+  @apply bg-app-gray-light mb-24;
+}
+
+footer {
+  @apply bg-app-white absolute bottom-0 w-full flex justify-center;
 }

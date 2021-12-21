@@ -12,8 +12,8 @@ const Template = function ({ children }) {
       <div className="content-container">
         <Seo />
         <main className="mt-16 lg:mt-20 mx-3">{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }
