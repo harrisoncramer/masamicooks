@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import RecipePreview from '../components/recipe-preview'
 import Search from "../components/search"
 
 const RecipePage = function(props) {
@@ -10,7 +10,7 @@ const RecipePage = function(props) {
   return (
     <Layout location={props.location}>
       <Search filter={filter} setFilter={setFilter} />
-      <ArticlePreview recipes={props.data.allContentfulRecipe.nodes} filter={filter}/>
+      <RecipePreview recipes={props.data.allContentfulRecipe.nodes} filter={filter}/>
     </Layout>
   )
 }

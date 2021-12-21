@@ -1,7 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Seo from '../components/seo'
@@ -10,19 +9,15 @@ import Tags from '../components/tags'
 
 import './recipe.css'
 
-class RecipeTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulRecipe')
-    const previous = get(this.props, 'data.previous')
-    const next = get(this.props, 'data.next')
-
+const RecipeTemplate = function (props) {
+    const post = props.data.contentfulRecipe;
+    const { previous, next } = props.data;
     const bodyHtml = documentToReactComponents(JSON.parse(post.content.raw))
     const introHtml = post.introduction
       ? documentToReactComponents(JSON.parse(post.introduction.raw))
       : null
-
     return (
-      <Layout location={this.props.location}>
+      <Layout location={props.location}>
         <Seo
           title={post.title}
           description={post.summary}
@@ -59,8 +54,8 @@ class RecipeTemplate extends React.Component {
             <div className="optional-ingredients">
               <h2>Optional Ingredients</h2>
               <ul>
-                {post.optionalIngredients.map((ingredient) => (
-                  <li>{ingredient}</li>
+                {post.optionalIngredients.map((ingredient, i) => (
+                  <li key={i}>{ingredient}</li>
                 ))}
               </ul>
             </div>
@@ -90,7 +85,7 @@ class RecipeTemplate extends React.Component {
         </div>
       </Layout>
     )
-  }
+
 }
 
 export default RecipeTemplate
@@ -134,14 +129,3 @@ export const pageQuery = graphql`
     }
   }
 `
-// <div className="">
-// {post.cookTime && (
-//   <div className="cookTime">Cook Time: {post.cookTime}</div>
-// )}
-// {post.prepTime && (
-//   <div className="cookTime">Prep Time: {post.prepTime}</div>
-// )}
-// {post.servings && (
-//   <div className="servings">Servings: {post.servings}</div>
-// )}
-// </div>

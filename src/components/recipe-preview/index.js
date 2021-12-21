@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import Container from '../container'
 import Tags from '../tags'
 
 const RecipeMetadata = function ({ recipe }) {
@@ -15,11 +14,11 @@ const RecipeMetadata = function ({ recipe }) {
     </div>
   )
 }
-const ArticlePreview = ({ recipes, blogPosts }) => {
+const ArticlePreview = ({ recipes }) => {
   return (
-      <div className="image-wrapper grid lg:gap-4 lg:grid-cols-4 md:gap-3 md:grid-cols-3 sm:grid-cols-2 gap-2 max-w-max m-auto">
+      <div className="grid lg:gap-4 lg:grid-cols-4 md:gap-3 md:grid-cols-3 sm:grid-cols-2 gap-2 max-w-max m-auto">
         {recipes &&
-          recipes.map((recipe, i) => {
+          recipes.map((recipe) => {
             return (
               <div key={recipe.slug} className="image-wrapper relative group">
                 <Link to={`/recipe/${recipe.slug}`}>
