@@ -50,7 +50,7 @@ export const mainPageQuery = graphql`
           raw
         }
         mainImage {
-          gatsbyImageData
+          gatsbyImageData(aspectRatio: 1)
         }
       }
     }

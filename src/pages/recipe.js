@@ -34,7 +34,7 @@ export const recipePageQuery = graphql`
           raw
         }
         mainImage {
-          gatsbyImageData
+          gatsbyImageData(aspectRatio: 1)
         }
       }
     }
