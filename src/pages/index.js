@@ -7,15 +7,15 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 
 const RootIndex = function ({ location, data }) {
-  const recipes = data.allContentfulRecipe.nodes;
-    return (
-      <Layout location={location}>
-        <div className="image-wrapper grid lg:gap-4 lg:grid-cols-4 md:gap-3 md:grid-cols-3 sm:grid-cols-2 gap-2 max-w-max m-auto">
+  const recipes = data.allContentfulRecipe.nodes
+  return (
+    <Layout location={location}>
+      <div className="image-wrapper grid lg:gap-4 lg:grid-cols-4 md:gap-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-2 max-w-max m-auto">
         {recipes &&
           recipes.map((recipe, i) => {
             return (
               <div key={recipe.slug} className="image-wrapper relative group">
-                <Link to={`/recipe/${recipe.slug}`} >
+                <Link to={`/recipe/${recipe.slug}`}>
                   <GatsbyImage
                     className="md:hover:cursor-pointer transition md:group-hover:opacity-50 duration-300 drop-shadow-md w-full"
                     alt={recipe.title}
@@ -30,15 +30,15 @@ const RootIndex = function ({ location, data }) {
             )
           })}
       </div>
-      </Layout>
-    )
-};
+    </Layout>
+  )
+}
 
 export default RootIndex
 
 export const mainPageQuery = graphql`
   query RootPageQuery {
-    allContentfulRecipe(sort: { fields: [date], order: DESC }) {
+    allContentfulRecipe(sort: { fields: [date], order: ASC }) {
       nodes {
         slug
         servings
