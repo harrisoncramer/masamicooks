@@ -10,37 +10,36 @@ import Tags from '../components/tags'
 import './recipe.css'
 
 const RecipeTemplate = function (props) {
-    const post = props.data.contentfulRecipe;
-    const { previous, next } = props.data;
-    const bodyHtml = documentToReactComponents(JSON.parse(post.content.raw))
-    const introHtml = post.introduction
-      ? documentToReactComponents(JSON.parse(post.introduction.raw))
-      : null
-    return (
-      <Layout location={props.location}>
-        <Seo
-          title={post.title}
-          description={post.summary}
-          image={`http:${post.mainImage.resize.src}`}
-        />
-        <div className="article max-w-7xl m-auto p-2">
-          <div className="recipeInfo mb-2">
-            <h1 className="font-display text-3xl">{post.title}</h1>
-            <time dateTime={post.date} className="font-sans block mb-2">
-              {post.date}
-            </time>
-            <Tags tags={post.categories} />
-          </div>
-          <div className="meta-container mb-4 md:flex gap-4">
-            <GatsbyImage
-              className="md:hover:cursor-pointer transition group-hover:opacity-50 duration-300 drop-shadow-md w-full mb-4"
-              alt={post.title}
-              image={post.mainImage.gatsbyImageData}
-              title={post.title}
-            />
-            {introHtml && <div className="introduction">{introHtml}</div>}
-          </div>
-          <div className="ingredients mb-4">
+  const post = props.data.contentfulRecipe
+  const { previous, next } = props.data
+  const bodyHtml = documentToReactComponents(JSON.parse(post.content.raw))
+  const introHtml = post.introduction
+    ? documentToReactComponents(JSON.parse(post.introduction.raw))
+    : null
+  return (
+    <Layout location={props.location}>
+      <Seo title={post.title} description={post.summary} />
+      <div className="recipeInfo flex flex-col items-center w-full my-6 lg:my-12 text-center mt-24 lg:mt-32 px-4">
+        <h1 className="font-display text-4xl lg:text-5xl">{post.title}</h1>
+        <time dateTime={post.date} className="font-sans block mb-2">
+          <small>{post.date}</small>
+        </time>
+        <Tags tags={post.categories} />
+      </div>
+      <div className="article max-w-5xl m-auto p-2">
+        <div className="meta-container mb-4 md:flex gap-4 m-auto">
+          <GatsbyImage
+            className="md:hover:cursor-pointer transition group-hover:opacity-50 duration-300 drop-shadow-md w-full mb-4"
+            alt={post.title}
+            image={post.mainImage.gatsbyImageData}
+            title={post.title}
+          />
+        </div>
+        {introHtml && (
+          <div className="introduction mb-6 md:mb-12">{introHtml}</div>
+        )}
+        <div className="md:grid grid-cols-12 gap-4">
+          <div className="ingredients mb-6 md:mb-4 col-span-4">
             <h2 className="font-display text-3xl mb-2">Ingredients</h2>
             <ul>
               {post.ingredients.map((ingredient, i) => (
@@ -60,32 +59,44 @@ const RecipeTemplate = function (props) {
               </ul>
             </div>
           )}
-          <div className="content">
-            <h2 className="font-display text-3xl">Instructions</h2>
+          <div className="content col-span-8">
+            <h2 className="font-display text-3xl mb-2 md:mb-2">Instructions</h2>
             <section className="instructions">{bodyHtml}</section>
           </div>
-          {(previous || next) && (
+        </div>
+        {(previous || next) && (
+          <div className="mt-12">
             <nav className="grid grid-cols-2">
               {previous && (
                 <div className="justify-start flex">
                   <Link to={`/recipe/${previous.slug}`} rel="prev">
-                    <small className="leading-none">← {previous.title}</small>
+                    <small>
+                      ←{' '}
+                      <span className="underline hover:opacity-70">
+                        {previous.title}
+                      </span>
+                    </small>
                   </Link>
                 </div>
               )}
               {next && (
                 <div className="flex justify-end">
                   <Link to={`/recipe/${next.slug}`} rel="next">
-                    <small>{next.title} →</small>
+                    <small>
+                      <span className="underline hover:opacity-70">
+                        {next.title}
+                      </span>
+                      →
+                    </small>
                   </Link>
                 </div>
               )}
             </nav>
-          )}
-        </div>
-      </Layout>
-    )
-
+          </div>
+        )}
+      </div>
+    </Layout>
+  )
 }
 
 export default RecipeTemplate

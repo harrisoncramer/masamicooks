@@ -13,5 +13,5 @@ body {
 }
 
 footer {
-  @apply bg-app-white absolute bottom-0 w-full flex justify-center;
+  @apply absolute bottom-0 w-full flex justify-center;
 }
