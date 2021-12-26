@@ -1,9 +1,19 @@
 @font-face {
-  font-family: "Something New";
-  src: url("../fonts/SomethingNew.woff2");
+  font-family: 'Something New';
+  src: url('../fonts/SomethingNew.woff2');
 }
 
 @font-face {
-  font-family: "Staatliches";
-  src: url("../fonts/Staatliches-Regular.ttf");
+  font-family: 'Staatliches';
+  src: url('../fonts/Staatliches-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../fonts/LibreBaskerville-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Playfair';
+  src: url('../fonts/playfair.ttf');
 }

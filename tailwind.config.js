@@ -4,7 +4,7 @@ module.exports = {
     fontFamily: {
       sans: ['Helvetica'],
       serif: [],
-      display: ['Staatliches'],
+      display: ['Playfair'],
     },
     screens: {
       sm: '480px',
@@ -14,13 +14,8 @@ module.exports = {
     },
     colors: {
       'app-white': '#ffffff',
-      'app-blue': '#2fb6ff',
-      'app-purple': '#7e5bef',
-      'app-pink': '#ff49db',
-      'app-orange': '#ff7849',
-      'app-green': '#13ce66',
-      'app-yellow': '#ffc82c',
-      'app-gray-dark': '#273444',
+      'app-theme': '#d00000',
+      'app-background': '#ffffff',
       'app-gray': '#ebebf2',
       'app-gray-light': '#f8f8ff',
     },

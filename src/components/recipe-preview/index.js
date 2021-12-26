@@ -7,15 +7,17 @@ import Tags from '../tags'
 const RecipeMetadata = function ({ recipe }) {
   return (
     <div className="recipe-metadata p-2">
-      <p className="font-display text-xl">{recipe.title}</p>
-      <small className="meta">{recipe.summary}</small>
+      <p className="font-display text-2xl text-app-theme pb-2">
+        {recipe.title}
+      </p>
+      <p className="meta">{recipe.summary}</p>
       <Tags tags={recipe.tags} />
     </div>
   )
 }
 const RecipePreview = ({ recipes }) => {
   return (
-    <div className="grid gap-6 gap-y-8 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto">
+    <div className="grid gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto">
       {recipes &&
         recipes.map((recipe) => {
           return (

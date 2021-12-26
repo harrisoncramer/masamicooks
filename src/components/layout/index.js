@@ -11,7 +11,7 @@ const Template = function ({ children }) {
       <Navigation />
       <div className="content-container">
         <Seo />
-        <main className="mt-16 lg:mt-20 mx-4">{children}</main>
+        <main className="mt-32 lg:mt-32 mx-4">{children}</main>
       </div>
       <Footer />
     </>

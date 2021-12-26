@@ -20,7 +20,9 @@ const RecipeTemplate = function (props) {
     <Layout location={props.location}>
       <Seo title={post.title} description={post.summary} />
       <div className="recipeInfo flex flex-col items-center w-full my-6 lg:my-12 text-center mt-24 lg:mt-32 px-4">
-        <h1 className="font-display text-4xl lg:text-5xl">{post.title}</h1>
+        <h1 className="font-display text-app-theme text-4xl lg:text-5xl mb-4">
+          {post.title}
+        </h1>
         <time dateTime={post.date} className="font-sans block mb-2">
           <small>{post.date}</small>
         </time>
@@ -40,7 +42,9 @@ const RecipeTemplate = function (props) {
         )}
         <div className="md:grid grid-cols-12 gap-4">
           <div className="ingredients mb-6 md:mb-4 col-span-4">
-            <h2 className="font-display text-3xl mb-2">Ingredients</h2>
+            <h2 className="font-display text-3xl mb-2 text-app-theme">
+              Ingredients
+            </h2>
             <ul>
               {post.ingredients.map((ingredient, i) => (
                 <li key={i} className="list-disc ml-4">
@@ -51,7 +55,9 @@ const RecipeTemplate = function (props) {
           </div>
           {post.optionalIngredients && (
             <div className="optional-ingredients">
-              <h2>Optional Ingredients</h2>
+              <h2 className="font-display text-3xl mb-2 text-app-theme">
+                Optional Ingredients
+              </h2>
               <ul>
                 {post.optionalIngredients.map((ingredient, i) => (
                   <li key={i}>{ingredient}</li>
@@ -60,7 +66,9 @@ const RecipeTemplate = function (props) {
             </div>
           )}
           <div className="content col-span-8">
-            <h2 className="font-display text-3xl mb-2 md:mb-2">Instructions</h2>
+            <h2 className="font-display text-3xl mb-2 md:mb-2 text-app-theme">
+              Instructions
+            </h2>
             <section className="instructions">{bodyHtml}</section>
           </div>
         </div>
@@ -68,26 +76,22 @@ const RecipeTemplate = function (props) {
           <div className="mt-12">
             <nav className="grid grid-cols-2">
               {previous && (
-                <div className="justify-start flex">
+                <div className="justify-start flex text-app-theme text-sm">
                   <Link to={`/recipe/${previous.slug}`} rel="prev">
-                    <small>
-                      ←{' '}
-                      <span className="underline hover:opacity-70">
-                        {previous.title}
-                      </span>
-                    </small>
+                    ←{' '}
+                    <span className="underline hover:opacity-70">
+                      {previous.title}
+                    </span>
                   </Link>
                 </div>
               )}
               {next && (
-                <div className="flex justify-end">
+                <div className="flex justify-end text-app-theme text-sm text-right">
                   <Link to={`/recipe/${next.slug}`} rel="next">
-                    <small>
-                      <span className="underline hover:opacity-70">
-                        {next.title}
-                      </span>
-                      →
-                    </small>
+                    <span className="underline hover:opacity-70">
+                      {next.title}
+                    </span>{' '}
+                    →
                   </Link>
                 </div>
               )}
