@@ -76,7 +76,7 @@ const RecipeTemplate = function (props) {
           <div className="mt-12">
             <nav className="grid grid-cols-2">
               {previous && (
-                <div className="justify-start flex text-app-theme text-sm">
+                <div className="justify-start flex text-sm">
                   <Link to={`/recipe/${previous.slug}`} rel="prev">
                     ←{' '}
                     <span className="underline hover:opacity-70">
@@ -86,7 +86,7 @@ const RecipeTemplate = function (props) {
                 </div>
               )}
               {next && (
-                <div className="flex justify-end text-app-theme text-sm text-right">
+                <div className="flex justify-end text-sm text-right">
                   <Link to={`/recipe/${next.slug}`} rel="next">
                     <span className="underline hover:opacity-70">
                       {next.title}

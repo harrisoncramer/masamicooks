@@ -15,3 +15,8 @@ body {
 footer {
   @apply absolute bottom-0 w-full flex justify-center;
 }
+
+input[type='text']:focus {
+  outline-style: solid;
+  outline-width: 1px;
+}

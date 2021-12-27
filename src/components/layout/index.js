@@ -5,10 +5,10 @@ import Navigation from '../navigation'
 import Footer from '../footer'
 import './layout.css'
 
-const Template = function ({ children }) {
+const Template = function ({ children, location }) {
   return (
     <>
-      <Navigation />
+      <Navigation location={location} />
       <div className="content-container">
         <Seo />
         <main className="mt-32 lg:mt-32 mx-4">{children}</main>

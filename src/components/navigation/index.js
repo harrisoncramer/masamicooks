@@ -3,9 +3,10 @@ import { Link } from 'gatsby'
 import logo from '../../assets/hot-pot.png'
 import insta from '../../assets/insta.svg'
 
-const Navigation = () => {
+const Navigation = ({ location }) => {
   const [isDropped, setIsDropped] = useState(false)
 
+  const { pathname } = location
   const handleDropdown = (e) => {
     setIsDropped(!isDropped)
   }
@@ -32,18 +33,42 @@ const Navigation = () => {
           )}
         >
           <Link to="/about" activeClassName="active">
-            <h2 className="font-display text-xl lg:text-2xl">About</h2>
+            <h2
+              className={
+                pathname.includes('about')
+                  ? 'font-display text-xl lg:text-2xl underline'
+                  : 'font-display text-xl lg:text-2xl'
+              }
+            >
+              About
+            </h2>
           </Link>
           <Link to="/recipe/" activeClassName="active">
-            <h2 className="font-display text-xl lg:text-2xl">Recipes</h2>
+            <h2
+              className={
+                pathname.includes('recipe')
+                  ? 'font-display text-xl lg:text-2xl underline'
+                  : 'font-display text-xl lg:text-2xl'
+              }
+            >
+              Recipes
+            </h2>
           </Link>
           <Link to="/blog/" activeClassName="active">
-            <h2 className="font-display text-xl lg:text-2xl">Blog</h2>
+            <h2
+              className={
+                pathname.includes('blog')
+                  ? 'font-display text-xl lg:text-2xl underline'
+                  : 'font-display text-xl lg:text-2xl'
+              }
+            >
+              Blog
+            </h2>
           </Link>
         </div>
       </div>
       <div className="flex align-center justify-end flex-grow md:flex-grow-0">
-        <Link className="flex justify-start items-center pl-2" to="/">
+        <Link className="flex justify-start items-center" to="/">
           <div className="object-scale-down h-8 w-8 lg:h-10 lg:w-10 ">
             <img src={logo} />
           </div>

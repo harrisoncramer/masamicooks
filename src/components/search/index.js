@@ -89,7 +89,7 @@ const Search = (props) => {
 
 const ResultList = ({ results, query }) => {
   return (
-    <ul className="search-results absolute z-10 bg-app-white drop-shadow rounded-b-lg rounded-tr-lg mt-1 max-h-80 overflow-scroll">
+    <ul className="search-results absolute z-10 bg-app-white rounded-b-lg rounded-tr-lg mt-1 max-h-80 overflow-scroll">
       {results.length > 0 ? (
         results.map((node, i) => {
           const type = node.__typename === 'ContentfulBlog' ? 'blog' : 'recipe'

@@ -24,7 +24,7 @@ const RecipePreview = ({ recipes }) => {
             <div key={recipe.slug} className="image-wrapper relative group">
               <Link to={`/recipe/${recipe.slug}`}>
                 <GatsbyImage
-                  className="md:hover:cursor-pointer transition group-hover:opacity-50 duration-300 w-full"
+                  className="md:hover:cursor-pointer transition md:group-hover:opacity-50 duration-300 w-full"
                   alt={recipe.title}
                   image={recipe.mainImage.gatsbyImageData}
                   title={recipe.title}
