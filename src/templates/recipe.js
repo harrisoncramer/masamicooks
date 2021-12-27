@@ -52,19 +52,21 @@ const RecipeTemplate = function (props) {
                 </li>
               ))}
             </ul>
+            {post.optionalIngredients && (
+              <div className="optional-ingredients mt-4">
+                <h2 className="font-display text-3xl mb-2 text-app-theme">
+                  Optional Ingredients
+                </h2>
+                <ul>
+                  {post.optionalIngredients.map((ingredient, i) => (
+                    <li key={i} className="list-disc ml-4">
+                      {ingredient}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          {post.optionalIngredients && (
-            <div className="optional-ingredients">
-              <h2 className="font-display text-3xl mb-2 text-app-theme">
-                Optional Ingredients
-              </h2>
-              <ul>
-                {post.optionalIngredients.map((ingredient, i) => (
-                  <li key={i}>{ingredient}</li>
-                ))}
-              </ul>
-            </div>
-          )}
           <div className="content col-span-8">
             <h2 className="font-display text-3xl mb-2 md:mb-2 text-app-theme">
               Instructions
