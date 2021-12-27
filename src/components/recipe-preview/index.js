@@ -11,7 +11,7 @@ const RecipeMetadata = function ({ recipe }) {
         {recipe.title}
       </p>
       <p className="meta">{recipe.summary}</p>
-      <Tags tags={recipe.tags} />
+      <i className="im im-instagram"></i>
     </div>
   )
 }

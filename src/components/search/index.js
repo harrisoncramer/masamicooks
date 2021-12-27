@@ -75,7 +75,7 @@ const Search = (props) => {
     <div className="search-field my-4">
       <input
         ref={searchRef}
-        className="search-field my-1 flex border-2 p-2 rounded width border-app-gray"
+        className="search-field my-1 flex border-2 p-2 rounded width border-app-gray focus:outline-app-theme"
         id="search"
         type="text"
         value={query}
@@ -95,9 +95,7 @@ const ResultList = ({ results, query }) => {
           const type = node.__typename === 'ContentfulBlog' ? 'blog' : 'recipe'
           return (
             <Link to={`/${type}/${node.slug}`} key={i}>
-              <li
-                className="search-results__item py-3 px-4 md:hover:bg-app-gray border border-app-gray"
-              >
+              <li className="search-results__item py-3 px-4 md:hover:bg-app-theme md:hover:bg-opacity-5 border border-app-gray">
                 <h4>{node.title}</h4>
               </li>
             </Link>

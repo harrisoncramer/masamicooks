@@ -22,8 +22,10 @@ const RootIndex = function ({ location, data }) {
                     image={recipe.mainImage.gatsbyImageData}
                     title={recipe.title}
                   />
-                  <div className="image-description top-1/3 left-0 right-0 absolute z-10 w-3/4 my-0 mx-auto text-xl text-center font-bold font-xl transition opacity-0 md:group-hover:opacity-100">
-                    <p className="font-display text-center">{recipe.title}</p>
+                  <div className="image-description top-1/3 left-0 right-0 absolute z-10 w-3/4 my-0 mx-auto text-lg lg:text-3xl text-center font-xl transition opacity-0 md:group-hover:opacity-100">
+                    <p className="font-display text-center text-app-theme">
+                      {recipe.title}
+                    </p>
                   </div>
                 </Link>
               </div>

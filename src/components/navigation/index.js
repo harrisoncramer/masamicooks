@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../../assets/hot-pot.png'
-import insta from '../../assets/instagram.png'
+import insta from '../../assets/insta.svg'
 // import youtube from '../../assets/yt.png'
 
 const Navigation = () => (
@@ -24,12 +24,25 @@ const Navigation = () => (
     <div className="flex align-center justify-center">
       <Link className="flex justify-start items-center pl-2" to="/">
         <div className="object-scale-down h-8 w-8 lg:h-10 lg:w-10 ">
-          <img src={logo} alt="Logo" />
+          <img src={logo} />
         </div>
       </Link>
     </div>
     <div className="flex justify-end flex-grow basis-0 items-center">
-      <img className="w-8 h-8" src={insta} alt="Instagram" />
+      <svg>
+        <a
+          href="https://instagram.com/masamicooks"
+          className="flex-grow basis-0 flex justify-end"
+        >
+          <image
+            width={25}
+            x={'70%'}
+            y={62}
+            xlinkHref={insta}
+            alt="Instagram"
+          />
+        </a>
+      </svg>
     </div>
   </nav>
 )

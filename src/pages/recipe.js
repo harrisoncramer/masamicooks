@@ -30,6 +30,7 @@ export const recipePageQuery = graphql`
         summary
         title
         date
+        categories
         content {
           raw
         }
