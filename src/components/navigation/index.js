@@ -46,7 +46,7 @@ const Navigation = ({ location }) => {
           <Link to="/recipe/" activeClassName="active">
             <h2
               className={
-                pathname.includes('recipe')
+                pathname.endsWith('recipe/')
                   ? 'px-4 pt-2 font-display text-2xl underline'
                   : 'px-4 pt-2 font-display text-2xl'
               }
