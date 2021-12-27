@@ -27,7 +27,7 @@ const Navigation = () => {
         <div
           className={'px-4 overflow-hidden transition-height duration-25 '.concat(
             !isDropped
-              ? 'h-0 md:h-auto md:flex md:gap-2'
+              ? 'h-0 md:h-auto md:flex md:gap-2 lg:gap-4'
               : 'h-28 py-2 border-app-theme border'
           )}
         >
