@@ -10,7 +10,7 @@ const RootIndex = function ({ location, data }) {
   const recipes = data.allContentfulRecipe.nodes
   return (
     <Layout location={location}>
-      <div className="image-wrapper grid lg:gap-4 lg:grid-cols-3 md:gap-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-2 max-w-max m-auto">
+      <div className="image-wrapper gap-4 grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 max-w-max m-auto">
         {recipes &&
           recipes.map((recipe, i) => {
             return (
