@@ -75,7 +75,7 @@ const Search = (props) => {
     <div className="search-field my-4">
       <input
         ref={searchRef}
-        className="search-field my-1 flex border-2 p-2 rounded width border-app-gray focus:outline-app-theme"
+        className="search-field my-1 flex border p-2 rounded width border-app-gray focus:outline-app-theme"
         id="search"
         type="text"
         value={query}

@@ -26,18 +26,18 @@ const Navigation = ({ location }) => {
           </svg>
         </button>
         <div
-          className={'px-4 overflow-hidden transition-height duration-25 '.concat(
+          className={'overflow-hidden transition-height duration-25 '.concat(
             !isDropped
               ? 'h-0 md:h-auto md:flex md:gap-2 lg:gap-4'
-              : 'h-28 py-2 border-app-theme border'
+              : 'h-32 border-app-theme border'
           )}
         >
           <Link to="/about" activeClassName="active">
             <h2
               className={
                 pathname.includes('about')
-                  ? 'font-display text-xl lg:text-2xl underline'
-                  : 'font-display text-xl lg:text-2xl'
+                  ? 'px-4 pt-2 font-display text-2xl underline'
+                  : 'px-4 pt-2 font-display text-2xl'
               }
             >
               About
@@ -47,8 +47,8 @@ const Navigation = ({ location }) => {
             <h2
               className={
                 pathname.includes('recipe')
-                  ? 'font-display text-xl lg:text-2xl underline'
-                  : 'font-display text-xl lg:text-2xl'
+                  ? 'px-4 pt-2 font-display text-2xl underline'
+                  : 'px-4 pt-2 font-display text-2xl'
               }
             >
               Recipes
@@ -58,8 +58,8 @@ const Navigation = ({ location }) => {
             <h2
               className={
                 pathname.includes('blog')
-                  ? 'font-display text-xl lg:text-2xl underline'
-                  : 'font-display text-xl lg:text-2xl'
+                  ? 'px-4 py-2 font-display text-2xl underline'
+                  : 'px-4 py-2 font-display text-2xl'
               }
             >
               Blog
