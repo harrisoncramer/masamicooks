@@ -32,6 +32,7 @@ module.exports = {
       'app-header': '#f8b591',
       'app-theme': '#f4473a',
       'app-background': '#fff5e1',
+      'app-background-dark': '#e6ddcc',
       'app-gray': '#ebebf2',
       'app-gray-light': '#f8f8ff',
     },
