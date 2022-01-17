@@ -15,9 +15,9 @@ const Navigation = ({ location }) => {
     <nav
       role="navigation"
       aria-label="Main"
-      className="flex justify-between items-center nav px-4 md:px-4 lg:px-6 py-2 lg:py-3 fixed top-0 w-full h-24 z-20 text-app-theme bg-app-white border-app-theme"
+      className="flex justify-between items-center nav px-4 md:px-4 lg:px-6 py-2 lg:py-3 fixed top-0 w-full h-24 z-20 text-app-theme bg-app-header border-app-theme"
     >
-      <div className="absolute top-6 bg-app-white flex flex-col items-start justify-start flex-grow basis-0 md:top-0 md:flex-row md:relative md:items-center">
+      <div className="absolute top-6 bg-app-header flex flex-col items-start justify-start flex-grow basis-0 md:top-0 md:flex-row md:relative md:items-center">
         <button className="md:hidden" onClick={handleDropdown}>
           <svg fill="#d00000" viewBox="0 -25 100 80" width="40" height="40">
             <rect width="50" height="10"></rect>

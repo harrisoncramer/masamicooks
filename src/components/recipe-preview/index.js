@@ -2,16 +2,12 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import Tags from '../tags'
-
 const RecipeMetadata = function ({ recipe }) {
   return (
     <div className="recipe-metadata p-2">
-      <p className="font-display text-2xl text-app-theme pb-2">
+      <p className="font-display text-app-black text-xl decoration-app-theme underline">
         {recipe.title}
       </p>
-      <p className="meta">{recipe.summary}</p>
-      <i className="im im-instagram"></i>
     </div>
   )
 }
