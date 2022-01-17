@@ -11,7 +11,7 @@ const Template = function ({ children, location }) {
       <Navigation location={location} />
       <div className="content-container">
         <Seo />
-        <main className="mt-32 lg:mt-32 mx-4">{children}</main>
+        <main className="my-32 lg:mt-32 mx-4">{children}</main>
       </div>
       <Footer />
     </>
