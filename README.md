@@ -1,6 +1,6 @@
 # <a href="https://www.masamicooks.com">masamicooks.com</a> 🍱🍜🍲
 
-Welcome, this is the source code for <a href="masamicooks.com">masamicooks</a>, the online cooking blog! Please feel free to look around, and if you're interested, make a pull request.
+Welcome, this is the source code for <a href="masamicooks.com">masamicooks</a>, the online cooking blog!
 
 The content for this site comes from Contentful, and is not stored within the repository.
 
