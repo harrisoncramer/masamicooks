@@ -10,9 +10,9 @@ The content for this site comes from Contentful, and is not stored within the re
 
 1. Configure `.env` file for Contentful API.
 ```
-# All environment variables will be sourced and made available to gatsby-config.js, gatsby-node.js, etc.
-CONTENTFUL_SPACE_ID=your_contentful_space_id
-CONTENTFUL_ACCESS_TOKEN=your_contentful_access_token
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_DELIVERY_TOKEN=
+CONTENTFUL_PREVIEW_TOKEN=
 ```
 2. `npm install`
 3. `npm start`

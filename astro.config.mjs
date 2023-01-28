@@ -15,7 +15,4 @@ export default defineConfig({
         serviceEntryPoint: '@astrojs/image/sharp'
       }),
     ],
-    'process.env.CONTENTFUL_SPACE_ID': JSON.stringify(process.env.CONTENTFUL_SPACE_ID),
-    'process.env.CONTENTFUL_DELIVERY_TOKEN': JSON.stringify(process.env.CONTENTFUL_DELIVERY_TOKEN),
-    'process.env.CONTENTFUL_PREVIEW_TOKEN': JSON.stringify(process.env.CONTENTFUL_PREVIEW_TOKEN),
 });
