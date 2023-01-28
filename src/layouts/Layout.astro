@@ -1,0 +1,57 @@
+---
+import Header from "../components/Header.astro";
+
+export interface Props {
+  title: string;
+  recipe?: boolean;
+}
+
+const { title, recipe } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{!recipe && "masamicooks - "}{title}</title>
+    <meta property="og:description" content="Masami Cookson's cooking blog." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="" />
+    <meta name="twitter:description" content="Masami Cookson's cooking blog." />
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: "Nugelo";
+    src: url("/fonts/nugelo.otf");
+  }
+
+  h1 {
+    font-family: "Nugelo";
+  }
+
+  html {
+    @apply relative min-h-full;
+  }
+
+  body {
+    @apply bg-app-background mb-24 mt-24;
+  }
+
+  footer {
+    @apply absolute bottom-0 w-full flex justify-center text-app-theme py-8;
+  }
+
+  input[type="text"]:focus {
+    outline-style: solid;
+    outline-width: 1px;
+  }
+</style>

@@ -1,0 +1,27 @@
+<style is:global>
+  @font-face {
+    font-family: "Nugelo";
+    src: url("/fonts/nugelo.otf");
+  }
+
+  h1 {
+    font-family: "Nugelo";
+  }
+
+  html {
+    @apply relative min-h-full;
+  }
+
+  body {
+    @apply bg-app-background mb-24 mt-24;
+  }
+
+  footer {
+    @apply absolute bottom-0 w-full flex justify-center text-app-theme py-8;
+  }
+
+  input[type="text"]:focus {
+    outline-style: solid;
+    outline-width: 1px;
+  }
+</style>
