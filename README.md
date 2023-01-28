@@ -1,3 +1,5 @@
+# MasamiCooks
+
 # <a href="https://www.masamicooks.com">masamicooks.com</a> 🍱🍜🍲
 
 Welcome, this is the source code for <a href="masamicooks.com">masamicooks</a>, the online cooking blog!
@@ -6,15 +8,14 @@ The content for this site comes from Contentful, and is not stored within the re
 
 ## Development
 
-1. Configure `.env.development` file for Contentful API.
+1. Configure `.env` file for Contentful API.
 ```
 # All environment variables will be sourced and made available to gatsby-config.js, gatsby-node.js, etc.
-CONTENTFUL_SPACE_ID='your_contentful_space_id'
-CONTENTFUL_ACCESS_TOKEN='your_contentful_access_token'
+CONTENTFUL_SPACE_ID=your_contentful_space_id
+CONTENTFUL_ACCESS_TOKEN=your_contentful_access_token
 ```
-
 2. `npm install`
-3. `npm run dev`
+3. `npm start`
 
 ## Production
 
@@ -44,9 +45,7 @@ The contentful API triggers a deploy of our site whenever the user publishes a n
 This action is basically triggered via a POST request to the `https://api.github.com/repos/harrisoncramer/masamicooks/dispatches` endpoint, carrying our authorization token from Github and the payload of:
 
 ```
-{
-    "event_type": "webhook"
-}
+{ "event_type": "webhook" }
 ```
 
 This will get detected by our Github Action, which will run the deploy. We only send this POST in Contentful when a piece of content is published or unpublished!

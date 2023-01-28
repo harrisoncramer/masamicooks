@@ -1,0 +1,34 @@
+---
+interface Props {
+  displayName: string;
+  path: string;
+}
+const { pathname } = Astro.url;
+const { path, displayName } = Astro.props;
+---
+
+<header-link data-message={path}>
+  <li
+    class:list={{
+      "px-4 pt-2 font-display text-2xl cursor-pointer header-link": true,
+      underline: pathname.endsWith(path),
+    }}
+  >
+    {displayName}
+  </li>
+</header-link>
+
+<script>
+  class HeaderLink extends HTMLElement {
+    constructor() {
+      super();
+
+      // Read the message from the data attribute.
+      const path = this.dataset.message;
+      this.addEventListener("click", () => {
+        if (path) window.location.replace(`/${path}`);
+      });
+    }
+  }
+  customElements.define("header-link", HeaderLink);
+</script>
