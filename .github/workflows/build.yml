@@ -1,4 +1,4 @@
-name: Build Gatsby site
+name: Build Astro site
 on:
   push:
     branches: ['dev']
