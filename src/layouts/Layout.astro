@@ -25,7 +25,9 @@ const { title, recipe } = Astro.props;
   </head>
   <body>
     <Header />
-    <slot />
+    <div class="mx-4 md:mx-8 flex justify-center">
+      <slot />
+    </div>
   </body>
 </html>
 <style is:global>
@@ -34,8 +36,13 @@ const { title, recipe } = Astro.props;
     src: url("/fonts/nugelo.otf");
   }
 
+  h2,
   h1 {
     font-family: "Nugelo";
+  }
+
+  h2 {
+    @apply text-3xl text-app-theme;
   }
 
   html {
