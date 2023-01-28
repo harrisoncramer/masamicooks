@@ -1,50 +1,51 @@
-# Welcome to [Astro](https://astro.build)
+# MasamiCooks
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+# <a href="https://www.masamicooks.com">masamicooks.com</a> 🍱🍜🍲
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Welcome, this is the source code for <a href="masamicooks.com">masamicooks</a>, the online cooking blog!
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+The content for this site comes from Contentful, and is not stored within the repository.
 
+## Development
 
-## 🚀 Project Structure
+1. Configure `.env` file for Contentful API.
+```
+# All environment variables will be sourced and made available to gatsby-config.js, gatsby-node.js, etc.
+CONTENTFUL_SPACE_ID=your_contentful_space_id
+CONTENTFUL_ACCESS_TOKEN=your_contentful_access_token
+```
+2. `npm install`
+3. `npm start`
 
-Inside of your Astro project, you'll see the following folders and files:
+## Production
+
+This repository is configured to deploy to a production environment whenever there is a push into the main branch. The repository therefore relies upon several environment variables to be set, including:
+
+1. `AWS_ACCESS_KEY_ID`
+2. `AWS_SECRET_ACCESS_KEY`
+3. `AWS_BUCKET_NAME`
+4. `AWS_BUCKET_REGION`
+5. `CLOUDFRONT_DISTRIBUTION_ID`
+6. `TF_API_TOKEN`
+7. `CONTENTFUL_ACCESS_TOKEN`
+8. `CONTENTFUL_SPACE_ID`
+
+Variables 1 and 2 are immediately accessible via the AWS console and allow Terraform to connect and configure our infrastructure.
+
+After an initial deploy of the infrastructure from our local machine, we will have to supply variables 3 through 5 into the environment.
+
+Item 6 is available via the Terraform Cloud console.
+
+Items 7 and 8 are available via the Contentful console. These are the keys that allow Github Actions to pull down the content we need to build our site.
+
+## Contentful
+
+The contentful API triggers a deploy of our site whenever the user publishes a new piece of content. This is done via a webhook. The webhook is listened for inside of our deployment Github Action.
+
+This action is basically triggered via a POST request to the `https://api.github.com/repos/harrisoncramer/masamicooks/dispatches` endpoint, carrying our authorization token from Github and the payload of:
 
 ```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+{ "event_type": "webhook" }
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This will get detected by our Github Action, which will run the deploy. We only send this POST in Contentful when a piece of content is published or unpublished!
