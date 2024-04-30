@@ -1,0 +1,64 @@
+---
+import { richTextParser } from "../../utils";
+import type { Document } from "@contentful/rich-text-types";
+import dayjs from "dayjs";
+import type { Asset } from "contentful";
+import { contentfulClient } from "../../lib/contentful";
+import Blog from "../../components/Blog.astro";
+import Layout from "../../layouts/Layout.astro";
+
+interface Blog {
+  title: string;
+  mainImage: Asset;
+  date: Date;
+  summary: string;
+  content: Document;
+  slug: string;
+  categories: Array<string>;
+}
+
+export async function getStaticPaths() {
+  const entries = await contentfulClient.getEntries<Blog>({
+    content_type: "blog",
+  });
+  return entries.items.map(({ fields }) => {
+    return {
+      params: {
+        slug: fields.slug,
+      },
+      props: {
+        ...fields,
+        content: richTextParser(fields.content),
+        summary: richTextParser(fields.summary),
+        date: dayjs(fields.date).format("LL"),
+      },
+    };
+  });
+}
+
+const {
+  title,
+  content,
+  mainImage,
+  summary,
+  date,
+  categories,
+  ingredients,
+  optionalIngredients,
+  slug,
+} = Astro.props;
+---
+
+<Layout title={title}>
+  <Blog
+    title={title}
+    content={content}
+    mainImage={mainImage}
+    summary={summary}
+    date={date}
+    categories={categories}
+    ingredients={ingredients}
+    optionalIngredients={optionalIngredients}
+    slug={slug}
+  />
+</Layout>

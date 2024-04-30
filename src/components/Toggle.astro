@@ -13,16 +13,12 @@
         let visible = false;
         self?.addEventListener("click", () => {
           visible = !visible;
-          const node = document.querySelector(
-            ".toggle-content"
-          ) as HTMLElement;
+          const node = document.querySelector(".toggle-content") as HTMLElement;
           if (node) node.style.display = visible ? "block" : "none";
         });
 
         window.addEventListener("resize", () => {
-          const node = document.querySelector(
-            ".toggle-content"
-          ) as HTMLElement;
+          const node = document.querySelector(".toggle-content") as HTMLElement;
           const width = window.innerWidth;
           if (width >= 768) {
             if (node) node.style.display = "flex";

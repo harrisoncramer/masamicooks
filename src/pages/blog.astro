@@ -1,7 +1,73 @@
 ---
+import { Image } from "@astrojs/image/components";
+import { contentfulClient } from "../lib/contentful";
+import type { Document } from "@contentful/rich-text-types";
+import type { Asset } from "contentful";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import RecipeTitle from "../components/RecipeTitle.astro";
 import Layout from "../layouts/Layout.astro";
+
+interface Blog {
+  title: string;
+  mainImage: Asset;
+  date: Date;
+  summary: string;
+  content: Document;
+  slug: string;
+  categories: Array<string>;
+}
+
+dayjs.extend(localizedFormat);
+const entries = await contentfulClient.getEntries<Blog>({
+  content_type: "blog",
+});
+
+console.log(entries.items)
+
+const items = entries.items.map(({ fields }) => {
+  return {
+    ...fields,
+    date: dayjs(fields.date).format("LL"),
+  };
+});
 ---
 
 <Layout title="blog">
-  <div>There are no blog posts...yet</div>
+    <div class="blog-wrapper">
+      <h2 class="mt-8 px-2 text-app-theme">Blog Posts</h2>
+      <div class="grid pt-6 gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto">
+        {
+          items.map(({ title, description, mainImage, slug, date, summary }) => {
+            return (
+              <div class="flex flex-col">
+                <RecipeTitle title={title} />
+                <a href={`/blog/${slug}`}>
+                  <div class="relative group flex-1">
+                    {mainImage.fields.file?.url && (
+                      <Image
+                        height={420}
+                        aspectRatio={1}
+                        alt={title}
+                        src={mainImage.fields.file?.url}
+                        class="md:hover:cursor-pointer transition md:group-hover:opacity-20 duration-300 w-full object-cover h-full"
+                      />
+                    )}
+                  </div>
+                  <time class="font-sans block mb-2">
+                    <small>{date}</small>
+                    <p class="mt-2">{summary}</p>
+                  </time>
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
 </Layout>
+<style>
+.blog-wrapper {
+  max-width: 80em;
+}
+</style>

@@ -35,9 +35,7 @@ const items = entries.items.map(({ fields }) => {
 <Layout title="recipes">
   <div class="recipes-wrapper">
     <h2 class="mt-8 px-2 text-app-theme">Recipes</h2>
-    <div
-      class="grid pt-6 gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto"
-    >
+    <div class="grid pt-6 gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto">
       {
         items.map(({ title, mainImage, slug }) => {
           return (
