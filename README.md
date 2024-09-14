@@ -1,4 +1,4 @@
-# MasamiCooks
+# MasamiCooks.com
 
 # <a href="https://www.masamicooks.com">masamicooks.com</a> 🍱🍜🍲
 
