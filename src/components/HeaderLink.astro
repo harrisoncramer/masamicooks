@@ -7,16 +7,16 @@ const { pathname } = Astro.url;
 const { path, displayName } = Astro.props;
 ---
 
-<header-link data-message={path}>
-  <li
-    class:list={{
-      "px-4 pt-2 font-display text-lg cursor-pointer text-app-brown list-none header-link": true,
-      "active": pathname.endsWith(path),
-    }}
-  >
+<li
+  class:list={{
+    "px-4 pt-2 font-display text-lg cursor-pointer text-app-brown list-none header-link": true,
+    "active": path === "" ? pathname === "/" : pathname.endsWith(path),
+  }}
+>
+  <a href={`/${path}`} class="text-app-brown no-underline">
     {displayName}
-  </li>
-</header-link>
+  </a>
+</li>
 
 <style is:global>
   .header-link {
@@ -46,16 +46,3 @@ const { path, displayName } = Astro.props;
     }
   }
 </style>
-
-<script>
-  class HeaderLink extends HTMLElement {
-    constructor() {
-      super();
-      const path = this.dataset.message;
-      this.addEventListener("click", () => {
-        if (path) window.location.replace(`/${path}`);
-      });
-    }
-  }
-  customElements.define("header-link", HeaderLink);
-</script>

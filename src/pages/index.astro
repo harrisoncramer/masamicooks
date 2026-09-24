@@ -5,6 +5,7 @@ import type { Document } from "@contentful/rich-text-types";
 import type { Asset } from "contentful";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import RecipeTitle from "../components/RecipeTitle.astro";
 import Layout from "../layouts/Layout.astro";
 dayjs.extend(localizedFormat);
 
@@ -32,45 +33,35 @@ const items = entries.items.map(({ fields }) => {
 ---
 
 <Layout title="home">
-  <div
-    class="grid-wrapper grid pt-6 gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto"
-  >
-    {
-      items.map(({ title, mainImage, slug }) => {
-        return (
-          <div>
-            <a href={`/recipe/${slug}`}>
-              <div class="relative group h-full overflow-hidden rounded-md">
-                {mainImage.fields.file?.url && (
-                  <Image
-                    height={420}
-                    aspectRatio={1}
-                    alt={title}
-                    src={mainImage.fields.file?.url}
-                    class="md:hover:cursor-pointer transition-all duration-300 md:group-hover:scale-105 md:group-hover:brightness-110 w-full object-cover h-full"
-                  />
-                )}
-              </div>
-            </a>
-          </div>
-        );
-      })
-    }
+  <div class="recipes-wrapper">
+    <div class="grid pt-6 gap-6 gap-y-8 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 max-w-max m-auto">
+      {
+        items.map(({ title, mainImage, slug }) => {
+          return (
+            <div class="flex flex-col">
+              <a href={`/recipe/${slug}`} class="group">
+                <div class="relative flex-1 overflow-hidden rounded-md">
+                  {mainImage.fields.file?.url && (
+                    <Image
+                      height={420}
+                      aspectRatio={1}
+                      alt={title}
+                      src={mainImage.fields.file?.url}
+                      class="skeleton md:hover:cursor-pointer transition-all duration-300 md:group-hover:scale-105 md:group-hover:brightness-110 w-full object-cover h-full"
+                    />
+                  )}
+                </div>
+                <RecipeTitle title={title} />
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
   </div>
 </Layout>
 <style>
-  .grid-wrapper {
+  .recipes-wrapper {
     max-width: 80em;
-  }
-
-  .grid-wrapper > div {
-    max-height: 410px;
-    overflow: hidden;
-    border-radius: 6px;
-    transition: box-shadow 0.2s ease;
-  }
-
-  .grid-wrapper > div:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
 </style>

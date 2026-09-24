@@ -30,9 +30,9 @@ const {
 } = Astro.props;
 ---
 
-<body>
-  <section class="max-w-3xl w-full m-auto px-4 mt-8 mb-12">
-    <div class="text-center mb-8">
+<section class="max-w-3xl w-full m-auto px-4 mt-8 mb-12">
+    <a href="/" class="text-app-muted text-sm hover:text-app-rust transition-colors">&larr; Back to recipes</a>
+    <div class="text-center mb-8 mt-4">
       <h1 class="font-display text-app-rust text-4xl lg:text-5xl mb-3">
         {title}
       </h1>
@@ -42,7 +42,7 @@ const {
       <Tags tags={categories} />
     </div>
     <div class="my-8 max-w-2xl m-auto">
-      <img src={mainImage.fields.file?.url} class="w-full" />
+      <img src={mainImage.fields.file?.url} alt={title} class="skeleton w-full" />
     </div>
     <div set:html={introduction} class="text-lg mb-8" />
     <div class="md:grid grid-cols-12 gap-8">
@@ -78,4 +78,3 @@ const {
       </div>
     </div>
   </section>
-</body>

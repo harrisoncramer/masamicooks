@@ -48,14 +48,14 @@ const items = entries.items.map(({ fields }) => {
                       aspectRatio={1}
                       alt={title}
                       src={mainImage.fields.file?.url}
-                      class="md:hover:cursor-pointer transition-all duration-300 md:group-hover:scale-105 md:group-hover:brightness-110 w-full object-cover h-full"
+                      class="skeleton md:hover:cursor-pointer transition-all duration-300 md:group-hover:scale-105 md:group-hover:brightness-110 w-full object-cover h-full"
                     />
                   )}
                 </div>
-                <time class="font-sans block mb-2">
-                  <small>{date}</small>
-                  <p class="mt-2">{summary}</p>
-                </time>
+                <div class="mt-2">
+                  <time class="font-sans text-app-muted"><small>{date}</small></time>
+                  <p class="mt-1">{summary}</p>
+                </div>
               </a>
             </div>
           );
