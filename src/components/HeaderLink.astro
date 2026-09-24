@@ -10,20 +10,47 @@ const { path, displayName } = Astro.props;
 <header-link data-message={path}>
   <li
     class:list={{
-      "px-4 pt-2 font-display text-2xl cursor-pointer header-link": true,
-      underline: pathname.endsWith(path),
+      "px-4 pt-2 font-display text-lg cursor-pointer text-app-brown list-none header-link": true,
+      "active": pathname.endsWith(path),
     }}
   >
     {displayName}
   </li>
 </header-link>
 
+<style is:global>
+  .header-link {
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .header-link::after {
+      content: "";
+      display: block;
+      margin: -2px auto 0;
+      height: 2px;
+      width: 0;
+      background-color: transparent;
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    .header-link:hover::after,
+    .header-link:focus-within::after {
+      width: 80%;
+      background-color: #b5451b;
+    }
+
+    .header-link.active::after {
+      width: 80%;
+      background-color: #b5451b;
+    }
+  }
+</style>
+
 <script>
   class HeaderLink extends HTMLElement {
     constructor() {
       super();
-
-      // Read the message from the data attribute.
       const path = this.dataset.message;
       this.addEventListener("click", () => {
         if (path) window.location.replace(`/${path}`);

@@ -6,12 +6,12 @@ interface Props {
 const { tags } = Astro.props;
 ---
 
-<small>
+<div class="flex flex-wrap gap-2 mt-2 justify-center">
   {
     tags.map((tag) => (
-      <div class="inline-block py-1 px-2 mr-1 mb-1 bg-app-theme bg-opacity-10 rounded-sm">
+      <span class="inline-block py-1 px-3 text-sm rounded-full bg-app-mustard-light bg-opacity-30 text-app-brown border border-app-border">
         {tag}
-      </div>
+      </span>
     ))
   }
-</small>
+</div>

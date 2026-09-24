@@ -14,4 +14,8 @@ export function richTextParser (richTextObject: Document) {
         }
   }
   return output
+    .replace(/\\n/g, " ")
+    .replace(/\n/g, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim()
 }

@@ -10,14 +10,15 @@
 
   html {
     @apply relative min-h-full;
+    overflow-y: scroll;
   }
 
   body {
-    @apply bg-app-background mb-24 mt-24;
+    @apply bg-app-background text-app-text mb-24 mt-16;
   }
 
   footer {
-    @apply absolute bottom-0 w-full flex justify-center text-app-theme py-8;
+    @apply absolute bottom-0 w-full flex justify-center text-app-muted py-8;
   }
 
   input[type="text"]:focus {

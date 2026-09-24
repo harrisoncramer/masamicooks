@@ -40,18 +40,14 @@ const items = entries.items.map(({ fields }) => {
         return (
           <div>
             <a href={`/recipe/${slug}`}>
-              <div class="relative group h-full">
-                <div class="image-description top-1/3 left-0 right-0 absolute z-10 w-3/4 my-0 mx-auto text-lg lg:text-3xl text-center font-xl transition opacity-0 md:group-hover:opacity-100">
-                  <p class="font-display text-center text-app-theme">{title}</p>
-                </div>
-
+              <div class="relative group h-full overflow-hidden rounded-md">
                 {mainImage.fields.file?.url && (
                   <Image
                     height={420}
                     aspectRatio={1}
                     alt={title}
                     src={mainImage.fields.file?.url}
-                    class="md:hover:cursor-pointer transition md:group-hover:opacity-20 duration-300 w-full object-cover h-full"
+                    class="md:hover:cursor-pointer transition-all duration-300 md:group-hover:scale-105 md:group-hover:brightness-110 w-full object-cover h-full"
                   />
                 )}
               </div>
@@ -70,5 +66,11 @@ const items = entries.items.map(({ fields }) => {
   .grid-wrapper > div {
     max-height: 410px;
     overflow: hidden;
+    border-radius: 6px;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .grid-wrapper > div:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
 </style>

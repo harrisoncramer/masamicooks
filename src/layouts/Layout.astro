@@ -36,28 +36,103 @@ const { title, recipe } = Astro.props;
     src: url("/fonts/nugelo.otf");
   }
 
+  *::selection {
+    background-color: #d94030;
+    color: #fff5e1;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(181, 69, 27, 0.3) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(181, 69, 27, 0.3);
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(181, 69, 27, 0.5);
+  }
+
   h2,
   h1 {
     font-family: "Nugelo";
   }
 
   h2 {
-    @apply text-3xl text-app-theme;
+    @apply text-3xl text-app-rust;
   }
 
   html {
     @apply relative min-h-full;
+    overflow-y: scroll;
   }
 
   body {
-    @apply bg-app-background mb-24 mt-24;
+    @apply bg-app-background text-app-text mb-24 mt-16;
+  }
+
+  p {
+    line-height: 1.8;
+    margin-bottom: 1.25em;
+    @apply text-app-text;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+
+  li {
+    line-height: 1.75;
+    @apply text-app-text;
+  }
+
+  small, time {
+    @apply text-app-text-light;
+  }
+
+  a {
+    @apply text-app-brown;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    @apply text-app-theme;
+  }
+
+  .nav-glow {
+    box-shadow:
+      inset 0 -30px 50px -10px rgba(217, 64, 48, 0.35),
+      inset 0 15px 40px -5px rgba(200, 164, 21, 0.2),
+      0 4px 16px rgba(92, 58, 33, 0.2);
+  }
+
+  img {
+    border-radius: 6px;
+  }
+
+  hr {
+    @apply border-app-border my-8;
+  }
+
+  blockquote {
+    @apply border-l-4 border-app-mustard pl-4 italic text-app-text-light my-4;
   }
 
   footer {
-    @apply absolute bottom-0 w-full flex justify-center text-app-theme py-8;
+    @apply absolute bottom-0 w-full flex justify-center text-app-muted py-8;
   }
 
   input[type="text"]:focus {
+    @apply outline-app-theme;
     outline-style: solid;
     outline-width: 1px;
   }
